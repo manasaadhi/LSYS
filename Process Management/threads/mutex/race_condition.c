@@ -3,7 +3,7 @@
 #include<stdlib.h>
 int counter = 0;
 
-void *compute()
+void *compute(void * args)
 {
 	counter++;
 	printf("Counter value: %d\n", counter);

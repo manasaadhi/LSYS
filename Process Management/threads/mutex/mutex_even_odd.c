@@ -27,8 +27,8 @@ sleep(1);
 }
 void * Even(void * a)
 {
-//	pthread_mutex_lock(&mutex);
-	while(x<=11)
+	//pthread_mutex_lock(&mutex);
+	while(x<=100)
 	{
 		if(x%2==0)
 		{
@@ -36,15 +36,15 @@ void * Even(void * a)
 			x++;
 		}
 		
-		//else
-		//	pthread_mutex_unlock(&mutex);
+		else
+			pthread_mutex_unlock(&mutex);
 		//x++;
 	}
 }
 void * odd(void * a)
 {
-       // pthread_mutex_lock(&mutex);
-        while(x<=11)
+       pthread_mutex_lock(&mutex);
+        while(x<=100)
         {
                 if(x%2!=0)
                 {
@@ -52,8 +52,8 @@ void * odd(void * a)
 			x++;
 		}
 		
-                //else
-        	  //      pthread_mutex_unlock(&mutex);
+               else
+        	        pthread_mutex_unlock(&mutex);
 	//x++;
 	}
 }
