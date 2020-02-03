@@ -22,19 +22,27 @@ int main()
 	else if(pid==0)
 	{
 		read(pipe_fds[0],read_msg,sizeof(read_msg));
-		printf("Message1:%s\n",read_msg);
+		printf("Message1_child:%s\n",read_msg);
+	getchar();
 		read(pipe_fds[0],read_msg,sizeof(read_msg));
-		printf("Message2:%s\n",read_msg);
+		printf("Message2_child:%s\n",read_msg);
+	getchar();
 		read(pipe_fds[0],read_msg,sizeof(read_msg));
-		printf("Message3:%s\n",read_msg);
+		printf("Message3_child:%s\n",read_msg);
+	getchar();
 		write(pipe_fds[1],"Thankyou",sizeof("Thankyou"));
 		
 	}
 	else
 	{
-		write(pipe_fds[1],write_msg[0],sizeof(write_msg));
+		write(pipe_fds[1],write_msg[0],sizeof(write_msg));	
+	getchar();
 		write(pipe_fds[1],write_msg[1],sizeof(write_msg));
+	getchar();
 		write(pipe_fds[1],write_msg[2],sizeof(write_msg));	
+	getchar();
+		read(pipe_fds[0],read_msg,sizeof(read_msg));
+		printf("Message_parent:%s\n",read_msg);
 	}
 	return 0;
 }
